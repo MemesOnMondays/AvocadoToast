@@ -2,7 +2,7 @@
 
 Memecoin, coming soon...
 
-Get updates https://memesonmondays.substack.com
+Get updates https://MemesOnMondays.com
 
 Follow us at https://x.com/MemesOnMondays
 
