@@ -15,9 +15,9 @@ pragma solidity ^0.8.21;
  *   ▓▓░░░░░      ░░░░░▓▓ 
  *   ▓▓░░░░░░░░░░░░░░░░▓▓ 
  *   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
- * https://avocadotoken.xyz
+ * https://AvocadoToken.xyz
+ * https://MemesOnMondays.com
  * https://x.com/MemesOnMondays
- * https://memesonmondays.substack.com
  * 
  * @notice Just like the delicious brunch dish, 
  * this memecoin is the perfect blend of thrill,
