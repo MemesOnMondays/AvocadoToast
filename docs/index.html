@@ -1,1 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Karla&display=swap" rel="stylesheet">
+    <title>Avocado Toast</title>
+    <style>
+        body {
+            background: url('./background.png') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            font-family: 'Black Ops One', sans-serif;
+            color: #EEFFEEEE;
+            text-shadow: 3px 3px 6px rgba(53, 53, 53, 1);
+            margin: 0;
+        }
 
+        .header {
+            text-align: center;
+            position: fixed;
+            margin: 0;
+            top: 0%;
+            width: 100%;
+            background: #111b1dDD;
+            padding: 10px;
+            font-family: 'Karla', sans-serif;
+            text-shadow: none;
+        }
+
+        .menu {
+            text-align: right;
+            position: absolute;
+            top: 10%;
+            right: 5%;
+        }
+
+        .bottom {
+            text-align: left;
+            position: absolute;
+            bottom: 5%;
+            left: 5%;
+        }
+
+        h1 {
+            font-size: 41px;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none !important;
+            color: #EEFFEEEE !important;
+        }
+
+        p {
+            font-family: 'Karla', sans-serif;
+        }
+
+        button {
+            width: 150px;
+            height: 30px;
+            border: 0px;
+            border-radius: 30px;
+            background: #7b982bff;
+            color: #FFF;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: 'Karla', sans-serif;
+        }
+
+        .text-small {
+            font-size: 12px;
+        }
+
+        .text-italic {
+            font-style: italic;
+        }
+
+        .text-bold {
+            font-weight: bold;
+        }
+
+        .text-normal {
+            font-family: 'Karla', sans-serif;
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .header-links {
+            margin-top: 5px;
+        }
+        
+        .menu div {
+            margin-bottom: 5%;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .tagline {
+            margin-bottom: 3%;
+        }
+
+        .flex-row {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-around;
+            align-items: normal;
+            align-content: normal;
+            max-width: 400px;
+        }
+
+        .icon {
+            height: 50px;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+        
+        #content {
+            display: none;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 5%;
+            overflow: auto;
+            background: #111b1dDD;
+        }
+
+        #back-icon {
+            position: fixed;
+            top: 3%;
+            right: 3%;
+            cursor: pointer;
+        }
+
+        #container {
+            max-width: 600px;
+            margin: 10% auto 0% auto;
+        }
+
+        .airdrop-link button {
+            margin: 5px 0px 20px 0px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div>A <span class="text-italic"><span class="text-bold">MemesOnMondays</span>.eth</span> Project</div>
+        <div class="text-small header-links">- <a href="https://etherscan.io/address/0xfe0Ac9c6591E2C7bb534A9BA5b088B6c6020668F" target="_blank">CHECK PROOF</a> - <a href="https://memesonmondays.substack.com" target="_blank">GET NEWSLETTER</a> -</div>
+    </div>
+    <div class="menu">
+        <div id="tokenomics">TOKENOMICS</div>
+        <div id="partners">PARTNERS</div>
+        <div id="roadmap">ROADMAP</div>
+        <div id="airdrop">AIRDROP</div>
+    </div>
+    <div class="bottom">
+        <h1>Avocado Toast</h1>
+        <div class="tagline">Smashing the memes like guacamole</div>
+        <div class="flex-row">
+            <a href="https://twitter.com/MemesOnMondays" target="_blank"><img class="icon" src="./twitter.png" /></a>
+            <a href="https://etherscan.io/address/0xfe0Ac9c6591E2C7bb534A9BA5b088B6c6020668F" target="_blank"><img class="icon" src="./etherscan.png" /></a>
+            <a href="https://github.com/MemesOnMondays/AvocadoToast/" target="_blank"><img class="icon" src="./github.png" /></a>
+            <a href="https://dextools.io" target="_blank"><img class="icon" src="./dextools.png" /></a>
+            <a href="https://memesonmondays.substack.com" target="_blank"><img class="icon" src="./substack.png" /></a>
+        </div>
+    </div>
+    <div id="content">
+        <div id="back-icon"><img src="./back.png" /></div>
+        <div id="container">
+            
+        </div>
+    </div>
+    <script>
+        const animate = async (el, step=50) => {
+            step -= 1;
+            el.style.top = `${step}%`;
+            el.style.bottom = `${step}%`;
+            if (step > 0)
+                setTimeout(()=> animate(el,step), 10);
+        }
+        document.getElementById('back-icon').onclick = async () => {
+            document.getElementById('content').style.display = 'none';
+        }
+        document.getElementById('tokenomics').onclick = async () => {
+            document.getElementById('content').style.display = 'flex';
+            animate(document.getElementById('content'));
+            await fetch('./tokenomics.html').then(response => response.text()).then((responseText) => {
+                document.getElementById('container').innerHTML = responseText;
+            });
+        }
+        document.getElementById('partners').onclick = async () => {
+            document.getElementById('content').style.display = 'flex';
+            animate(document.getElementById('content'));
+            await fetch('./partners.html').then(response => response.text()).then((responseText) => {
+                document.getElementById('container').innerHTML = responseText;
+            });
+        }
+        document.getElementById('roadmap').onclick = async () => {
+            document.getElementById('content').style.display = 'flex';
+            animate(document.getElementById('content'));
+            await fetch('./roadmap.html').then(response => response.text()).then((responseText) => {
+                document.getElementById('container').innerHTML = responseText;
+            });
+        }
+        document.getElementById('airdrop').onclick = async () => {
+            document.getElementById('content').style.display = 'flex';
+            animate(document.getElementById('content'));
+            await fetch('./airdrop.html').then(response => response.text()).then((responseText) => {
+                document.getElementById('container').innerHTML = responseText;
+            });
+        }
+    </script>
+</body>
+</html>
