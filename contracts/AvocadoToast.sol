@@ -119,6 +119,10 @@ contract AvocadoToast is ERC20 {
         }
     }
 
+    /**
+     * @notice 99% of liquidity is sent to Uniswap v3 and NFT LP token
+     * is locked in the contract with no methods to remove or redeem it
+     */
     function addLiquidity() external {
         IERC20(address(this)).approve(address(posMan), uniswapSupply);
         posMan.mint(INonfungiblePositionManager.MintParams({
